@@ -1,2 +1,3 @@
 # SCB-larvalrockfish
-Larval rockfish diet and otolith microstructure models
+Bayesian multilevel models predicting larval rockfish size and recent growth using diet and otolith microstructure data. 
+
