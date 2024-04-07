@@ -175,6 +175,7 @@ precis(ProportionRG.ME)
 plot(ProportionRG.ME)
 
 # traceplots
+#traceplot(CoreAge)
 #traceplot(ProportionofBioSL)
 #traceplot(ProportionofBioRG)
 
@@ -271,4 +272,15 @@ lines(density(priorsim2), col=rgb(0,0,1,1), lwd=3)
 legend("topright", legend=c("Observed Data", "Posterior", "Prior"), 
        fill = c("grey", rgb(1,0,0,1), rgb(0, 0, 1,1)))
 
+sim3 <- rethinking::sim(CoreAge, post = extract.samples(CoreAge), n=1000)
+priorsim3 <- rethinking::sim(CoreAge, post = extract.prior(CoreAge), n=1000)
+hist(data_list$Age, prob=TRUE, 12, col="grey", xlim = c(-5,5), ylim = c(0,0.5), lwd=2,
+     main = "Age ~ Otolith Core", cex.main = 1.5, cex.axis = 1.0, xlab="Standardized Age Distribution", ylab="Density")
+# title(ylab= "Density", line=2)
+# title(xlab= "Standardized Length Distribution", line=2)
+# title( main="mSL1", cex.main = 1.5, line=1.5)
+lines(density(sim3), col=rgb(1, 0, 0,1), lwd= 3) 
+lines(density(priorsim3), col=rgb(0,0,1,1), lwd=3)
+legend("topright", legend=c("Observed Data", "Posterior", "Prior"), 
+       fill = c("grey", rgb(1,0,0,1), rgb(0, 0, 1,1)))
 
